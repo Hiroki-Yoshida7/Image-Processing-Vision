@@ -1,0 +1,102 @@
+Name:               hVision-base
+Version:            0.5
+License:            GPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/Image-Processing-Vision
+Synopsis:           Utilities for pattern recognition and computer vision
+Description:
+ Utilities for pattern recognition and computer vision.
+
+Category:           Math
+tested-with:        GHC ==7.6.3
+
+cabal-version:      >=1.2
+build-type:         Simple
+
+extra-source-files: src/Image/Capture/UVC/v4l2uvc.h
+                    src/Image/Capture/UVC/dynctrl-logitech.h
+                    src/Image/Capture/UVC/uvc_compat.h
+                    src/Image/Capture/UVC/uvcvideo.h
+                    src/Image/Capture/UVC/COPYING
+
+Data-files:         src/Image/Devel/wrappers.h
+
+
+flag uvc
+    description:    Use uvc cameras
+    default:        True
+
+
+library
+    Build-Depends:      base >= 4 && < 5, hmatrix, hmatrix-gsl, vector,
+                        process, array, random, containers, directory,
+                        old-locale, old-time,
+         --               hmatrix-glpk,
+                        hTensor,
+                        hscolour,
+                        process, temporary, split, SafeSemaphore,
+                        ghc-prim, binary, bytestring, deepseq,
+                        artools
+
+    hs-source-dirs:     src
+
+    Exposed-modules:    
+                        Util.LazyIO
+                        Util.Rotation
+                        Util.Estimation
+                        Util.Homogeneous
+                        Util.Small
+                        Util.Geometry
+                        Util.Polygon
+                        Util.Covariance
+                        Util.Probability
+                        Util.Kalman
+                        Util.Optimize
+                        Util.Ellipses
+                        Util.Quaternion
+                        Util.Sparse
+                        Util.ICA
+                        Util.Stat
+                        Util.Gaussian
+                        Util.Convex
+                        Util.Audio
+                        Util.Graph
+                        Util.Camera
+                        Util.NLHash
+                        Util.Experiment
+
+                        Image
+                        Image.Capture
+                        Image.Devel
+                        Image.ROI
+    other-modules:
+                        Image.Core
+                        Image.Convert
+                        Paths_hVision_base
+                        Image.Types
+                        Image.Capture.UVC
+                        Image.Capture.MPlayer
+
+    include-dirs:       src/Image/Devel
+
+    c-sources:          src/Image/Capture/Simple/simple.c
+
+    cc-options:         -O4 -msse2
+
+    ghc-prof-options:   -auto-all
+
+
+    ghc-options:        -Wall -funbox-strict-fields
+
+
+    if flag(uvc)
+        if ! os(OSX)
+            cpp-options: -DHASUVC
+            c-sources:   src/Image/Capture/UVC/v4l2uvc.c
+                         src/Image/Capture/UVC/capture.c
+
+    include-dirs:        src/Image/Capture/UVC/
+

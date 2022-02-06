@@ -1,0 +1,17 @@
+_darcs
+push.sh
+index.html
+QuickList.txt
+dist
+*.buildinfo
+*.o
+*.hi
+misc
+experiments
+findFiles.sh
+data
+packages/devel
+packages/newdevel
+projects/examples/tests
+lib/ippicv_lnx
+

@@ -1,0 +1,43 @@
+Name:               imagproc-gpu
+Version:            0.2.0
+License:            LGPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/hmatrix
+Synopsis:           image processing functions using the GPU
+Description:
+  image processing functions using the GPU and CUDA
+
+Category:           Math
+tested-with:        GHC ==7.4
+
+cabal-version:      >=1.2
+build-type:         Custom
+
+extra-source-files:     src/ImagProc/GPU/SIFT/SiftGPU.h
+
+extra-tmp-files:        imagproc-gpu.buildinfo
+
+library
+    Build-Depends:      base >= 3 && < 5,
+                        hmatrix >= 0.8.3, imagproc >= 0.1,
+                        ev-gui, GLUT, camera
+
+    hs-source-dirs:     src
+
+    Exposed-modules:    ImagProc.GPU.SIFT
+
+    other-modules:
+
+    c-sources:          src/ImagProc/GPU/SIFT/SiftGPU.cpp
+
+    cc-options:         -O4
+
+    ghc-prof-options:   -auto-all
+
+    ghc-options:        -Wall -fno-warn-missing-signatures
+
+    extra-libraries: siftgpu cudart Cg CgGL GLEW IL glut
+

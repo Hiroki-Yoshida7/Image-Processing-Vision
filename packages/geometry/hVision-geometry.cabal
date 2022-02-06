@@ -1,0 +1,49 @@
+Name:               hVision-geometry
+Version:            0.3.0
+License:            GPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/Image-Processing-Vision
+Synopsis:           geometric vision algorithms
+Description:
+ geometric vision algorithms.
+
+Category:           Math
+tested-with:        GHC ==6.12.3
+
+cabal-version:      >=1.2
+build-type:         Simple
+
+extra-source-files:
+
+library
+    Build-Depends:      base >= 3 && < 5, random, directory,
+                        array, containers, process,
+                        hmatrix, hmatrix-gsl, hVision-base,
+                        hTensor >= 0.5, artools
+
+    hs-source-dirs:     src
+
+    Exposed-modules:    Vision
+                        Vision.Camera
+                        Vision.Stereo
+                        Vision.TensorRep
+                        Vision.Tensorial
+                        Vision.Gea
+                        Vision.Types
+                        Vision.Epipolar
+                        Vision.Bootstrap
+                        Vision.Multiview
+                        Vision.IO
+                        Vision.LASBA
+                        Vision.Autofrontal
+                        Vision.Ippe
+
+    other-modules:
+
+    ghc-prof-options:   -auto-all
+
+--  ghc-options:        -Wall
+

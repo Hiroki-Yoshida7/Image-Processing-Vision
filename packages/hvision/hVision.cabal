@@ -1,0 +1,43 @@
+Name:               hVision
+Version:            0.3.0
+License:            GPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/Image-Processing-Vision
+Synopsis:           hVision tools
+Description:
+                    hVision tools
+
+Category:           Math
+
+cabal-version:      >=1.2
+build-type:         Simple
+
+extra-source-files:
+
+library
+    Build-Depends:      base >= 3 && < 5,
+                        hmatrix, hmatrix-gsl,
+                        hVision-base, hVision-contours, hVision-gui, hVision-ipp,
+                        hVision-geometry, hVision-custom, artools
+
+    hs-source-dirs:     src
+
+    Exposed-modules:   Image.Processing
+                       Vision.GUI
+                       Contours.Polygons
+
+    other-modules:     Vision.Apps.ShCamera
+                       Vision.Apps.Show
+                       Image.Processing.Generic
+                       Image.Processing.Tools
+                       Image.Processing.Moments
+                       Image.Processing.Contour
+
+
+    ghc-prof-options:   -auto-all
+
+    ghc-options:        -Wall
+

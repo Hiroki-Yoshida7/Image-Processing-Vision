@@ -1,0 +1,38 @@
+Name:               hVision-contrib
+Version:            0.3
+License:            GPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/Image-Processing-Vision
+Synopsis:           additional low level image processing functions
+Description:        additional low level image processing functions
+
+Category:           Math
+tested-with:        GHC ==7.6.3
+
+cabal-version:      >=1.2
+build-type:         Custom
+
+extra-source-files: configure configure.hs
+extra-tmp-files:    hVision-contrib.buildinfo
+
+
+library
+    Build-Depends:      base >= 3 && < 5, hVision-base
+
+    hs-source-dirs:     src
+
+    Exposed-modules:    ImagProc.Contrib.Examples
+
+    other-modules:
+
+    c-sources:          src/ImagProc/Contrib/Examples/examples.c
+
+    cc-options:         -O4 -msse2
+
+    ghc-prof-options:   -auto-all
+
+    ghc-options:        -Wall
+

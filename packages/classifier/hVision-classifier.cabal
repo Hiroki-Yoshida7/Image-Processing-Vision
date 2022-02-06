@@ -1,0 +1,46 @@
+Name:               hVision-classifier
+Version:            0.4.0
+License:            GPL
+License-file:       LICENSE
+Author:             Alberto Ruiz
+Maintainer:         Alberto Ruiz <aruiz@um.es>
+Stability:          experimental
+Homepage:           https://github.com/Hiroki-Yoshida7/Image-Processing-Vision
+Synopsis:           Simple pattern recognition algorithms
+Description:
+ Simple pattern recognition algorithms and 
+ feature extraction combinators.
+
+Category:           Math
+tested-with:        GHC ==7.6.3
+
+cabal-version:      >=1.2
+build-type:         Simple
+
+extra-source-files:
+
+library
+    Build-Depends:      base >= 3 && < 5, hmatrix, hVision-base,
+                        array, containers, process, random, artools
+
+    hs-source-dirs:     src
+
+    Exposed-modules:    Classifier
+                        Classifier.Base
+                        Classifier.Prepro
+                        Classifier.Simple
+                        Classifier.Neural
+                        Classifier.Kernel
+                        Classifier.GP
+                        Classifier.SVM
+                        Classifier.Adaboost
+                        Classifier.Regression
+                        Classifier.Tree
+                        Classifier.ToyProblems
+
+    other-modules:
+
+--    ghc-prof-options:   -auto-all
+
+    ghc-options:        -Wall
+
